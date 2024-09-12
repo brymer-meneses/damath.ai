@@ -5,13 +5,11 @@ project(
     meson_version: '>=1.5.1',
 )
 
-cc = meson.get_compiler('cpp')
-
 deps = []
 files = []
 includes = []
 
-deps += [cc.find_library('tensorflow_cc')]
+deps += [dependency('torch', version: '2.2.0', modules: 'torch')]
 
 files += [
     'src/engine.cc',
