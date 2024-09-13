@@ -58,20 +58,20 @@ Board::Board() {
   cells_[4 + 8 * 2].SetPiece({Piece::Color::Blue, 6});
   cells_[6 + 8 * 2].SetPiece({Piece::Color::Blue, -9});
 
-  cells_[0 + 8 * 5].SetPiece({Piece::Color::Red, -9});
-  cells_[2 + 8 * 5].SetPiece({Piece::Color::Red, 6});
-  cells_[4 + 8 * 5].SetPiece({Piece::Color::Red, -1});
-  cells_[6 + 8 * 5].SetPiece({Piece::Color::Red, 4});
+  cells_[1 + 8 * 5].SetPiece({Piece::Color::Red, -9});
+  cells_[3 + 8 * 5].SetPiece({Piece::Color::Red, 6});
+  cells_[5 + 8 * 5].SetPiece({Piece::Color::Red, -1});
+  cells_[7 + 8 * 5].SetPiece({Piece::Color::Red, 4});
 
-  cells_[1 + 8 * 6].SetPiece({Piece::Color::Red, 0});
-  cells_[3 + 8 * 6].SetPiece({Piece::Color::Red, -3});
-  cells_[5 + 8 * 6].SetPiece({Piece::Color::Red, 10});
-  cells_[7 + 8 * 6].SetPiece({Piece::Color::Red, -7});
+  cells_[0 + 8 * 6].SetPiece({Piece::Color::Red, 0});
+  cells_[2 + 8 * 6].SetPiece({Piece::Color::Red, -3});
+  cells_[4 + 8 * 6].SetPiece({Piece::Color::Red, 10});
+  cells_[6 + 8 * 6].SetPiece({Piece::Color::Red, -7});
 
-  cells_[0 + 8 * 7].SetPiece({Piece::Color::Red, -11});
-  cells_[2 + 8 * 7].SetPiece({Piece::Color::Red, 8});
-  cells_[4 + 8 * 7].SetPiece({Piece::Color::Red, -5});
-  cells_[6 + 8 * 7].SetPiece({Piece::Color::Red, 2});
+  cells_[1 + 8 * 7].SetPiece({Piece::Color::Red, -11});
+  cells_[3 + 8 * 7].SetPiece({Piece::Color::Red, 8});
+  cells_[5 + 8 * 7].SetPiece({Piece::Color::Red, -5});
+  cells_[7 + 8 * 7].SetPiece({Piece::Color::Red, 2});
 }
 
 Damath::Damath() {}

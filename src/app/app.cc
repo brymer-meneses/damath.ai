@@ -34,7 +34,7 @@ static auto Display(sf::RenderWindow* window, Game::Board& board) -> void {
       }
 
       sf::CircleShape shape(800 / 8 / 2 - 10);
-      shape.setPosition(x * 800 / 8 + 10, (7 - y) * 800 / 8 + 10);
+      shape.setPosition(x * 800 / 8 + 10, y * 800 / 8 + 10);
 
       if (piece->color == Game::Piece::Color::Blue) {
         shape.setFillColor(sf::Color::Blue);
@@ -47,7 +47,7 @@ static auto Display(sf::RenderWindow* window, Game::Board& board) -> void {
       text.setFillColor(sf::Color::White);
       text.setOrigin(text.getGlobalBounds().getSize() / 2.f +
                      text.getLocalBounds().getPosition());
-      text.setPosition(x * 800 / 8 + 50, (7 - y) * 800 / 8 + 50);
+      text.setPosition(x * 800 / 8 + 50, y * 800 / 8 + 50);
 
       window->draw(text);
     }
