@@ -4,15 +4,15 @@
 
 namespace DamathZero::App {
 
+static sf::Font font;
+
 static auto Clear(sf::RenderWindow* window) -> void {
   window->clear();
 
-  auto size = sf::Vector2f(800, 800);
-
   sf::RectangleShape background[64];
   for (int i = 0; i < 64; i++) {
-    background[i].setPosition(i % 8 * size.x / 8, i / 8 * size.y / 8);
-    background[i].setSize(sf::Vector2f(size.x / 8, size.y / 8));
+    background[i].setPosition(i % 8 * 800 / 8, i / 8 * 800 / 8);
+    background[i].setSize(sf::Vector2f(800 / 8, 800 / 8));
     if (i % 2 == i / 8 % 2) {
       background[i].setFillColor(sf::Color::White);
     } else {
@@ -24,23 +24,30 @@ static auto Clear(sf::RenderWindow* window) -> void {
 }
 
 static auto Display(sf::RenderWindow* window, Game::Board* board) -> void {
-  auto size = sf::Vector2f(800, 800);
-
   for (int x = 0; x < 8; x++) {
     for (int y = 0; y < 8; y++) {
       if (!((*board->pieces())[x][y])) {
         continue;
       }
 
-      sf::CircleShape shape(std::min(size.x, size.y) / 8 / 2 - 10);
-      shape.setPosition(x * size.x / 8 + 10, (7 - y) * size.y / 8 + 10);
+      sf::CircleShape shape(800 / 8 / 2 - 10);
+      shape.setPosition(x * 800 / 8 + 10, (7 - y) * 800 / 8 + 10);
 
       if (*(*board->pieces())[x][y]->owner() == Game::Player::White) {
-        shape.setFillColor(sf::Color{0, 0, 255});
+        shape.setFillColor(sf::Color::Blue);
       } else {
-        shape.setFillColor(sf::Color{255, 0, 0});
+        shape.setFillColor(sf::Color::Red);
       }
       window->draw(shape);
+
+      sf::Text text{std::to_string((*(*board->pieces())[x][y]->value())), font,
+                    60};
+      text.setFillColor(sf::Color::White);
+      text.setOrigin(text.getGlobalBounds().getSize() / 2.f +
+                     text.getLocalBounds().getPosition());
+      text.setPosition(x * 800 / 8 + 50, (7 - y) * 800 / 8 + 50);
+
+      window->draw(text);
     }
   }
 }
@@ -48,7 +55,12 @@ static auto Display(sf::RenderWindow* window, Game::Board* board) -> void {
 auto Run() -> int {
   Game::Damath game{};
 
-  sf::RenderWindow window(sf::VideoMode(800, 800), "damath.ai");
+  if (!font.loadFromFile("res/fonts/Akrobat-Black.ttf")) {
+    return EXIT_FAILURE;
+  }
+
+  sf::RenderWindow window(sf::VideoMode(800, 800), "damath.ai",
+                          sf::Style::Close, sf::ContextSettings(24, 8, 4));
 
   sf::View view{sf::FloatRect{0, 0, 800, 800}};
 
