@@ -37,7 +37,7 @@ static auto Display(sf::RenderWindow* window, Game::Board& board) -> void {
       shape.setPosition(x * 800 / 8 + 10, (7 - y) * 800 / 8 + 10);
 
       if (piece->color == Game::Piece::Color::Blue) {
-        shape.setFillColor(sf::Color{0, 0, 255});
+        shape.setFillColor(sf::Color::Blue);
       } else {
         shape.setFillColor(sf::Color::Red);
       }
