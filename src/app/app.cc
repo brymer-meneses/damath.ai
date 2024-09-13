@@ -23,25 +23,27 @@ static auto Clear(sf::RenderWindow* window) -> void {
   }
 }
 
-static auto Display(sf::RenderWindow* window, Game::Board* board) -> void {
+static auto Display(sf::RenderWindow* window, Game::Board& board) -> void {
+  auto size = sf::Vector2f(800, 800);
+
   for (int x = 0; x < 8; x++) {
     for (int y = 0; y < 8; y++) {
-      if (!((*board->pieces())[x][y])) {
+      auto piece = board.GetPiece(x, y);
+      if (!piece) {
         continue;
       }
 
       sf::CircleShape shape(800 / 8 / 2 - 10);
       shape.setPosition(x * 800 / 8 + 10, (7 - y) * 800 / 8 + 10);
 
-      if (*(*board->pieces())[x][y]->owner() == Game::Player::White) {
-        shape.setFillColor(sf::Color::Blue);
+      if (piece->color == Game::Piece::Color::Blue) {
+        shape.setFillColor(sf::Color{0, 0, 255});
       } else {
         shape.setFillColor(sf::Color::Red);
       }
       window->draw(shape);
 
-      sf::Text text{std::to_string((*(*board->pieces())[x][y]->value())), font,
-                    60};
+      sf::Text text{std::to_string((piece->value)), font, 60};
       text.setFillColor(sf::Color::White);
       text.setOrigin(text.getGlobalBounds().getSize() / 2.f +
                      text.getLocalBounds().getPosition());
