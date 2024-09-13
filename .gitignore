@@ -1,5 +1,5 @@
 .vscode
+.cache
 build*
-
-# clangd stores information on the .cache/clangd folder
-.cache/
+subprojects/*
+!subprojects/*.wrap
