@@ -33,7 +33,7 @@ static auto Display(sf::RenderWindow* window, Game::Board* board) -> void {
       }
 
       sf::CircleShape shape(std::min(size.x, size.y) / 8 / 2 - 10);
-      shape.setPosition(x * size.x / 8 + 10, y * size.y / 8 + 10);
+      shape.setPosition(x * size.x / 8 + 10, (7 - y) * size.y / 8 + 10);
 
       if (*(*board->pieces())[x][y]->owner() == Game::Player::White) {
         shape.setFillColor(sf::Color{0, 0, 255});

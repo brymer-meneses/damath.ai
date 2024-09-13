@@ -3,11 +3,6 @@
 namespace DamathZero::Game {
 
 Board::Board() {
-  for (int y = 0; y < 8; y++) {
-    for (int x = 0; x < 8; x++) {
-      pieces_[x][y] = nullptr;
-    }
-  }
   pieces_[5][2] = std::make_unique<Pawn>(Player::White, 0);
   pieces_[2][5] = std::make_unique<Pawn>(Player::Black, 0);
 
@@ -38,8 +33,11 @@ Board::Board() {
   pieces_[3][0] = std::make_unique<Pawn>(Player::White, -9);
   pieces_[4][7] = std::make_unique<Pawn>(Player::Black, -9);
 
-  pieces_[1][0] = std::make_unique<Dama>(Player::White, 10);
-  pieces_[6][7] = std::make_unique<Dama>(Player::Black, 10);
+  pieces_[7][0] = std::make_unique<Dama>(Player::White, 10);
+  pieces_[0][7] = std::make_unique<Dama>(Player::Black, 10);
+
+  pieces_[1][0] = std::make_unique<Dama>(Player::White, -11);
+  pieces_[6][7] = std::make_unique<Dama>(Player::Black, -11);
 }
 
 Operator operators[8][8] = {
